@@ -12,24 +12,32 @@ function App() {
       <Navbar />
       <div className="container mx-auto my-5 rounded-xl p-5 bg-violet-100 min-h-[80vh] ">
         <div className="AddTodo">
-          <h2 className="text-lg font-bold ">Add a Todo</h2>
+          <h2 className="text-lg font-bold my-5 ">Add a Todo</h2>
         </div>
 
-        <input type="text" />
-        <button>Add</button>
+        <input type="text" className="w-80 rounded-md" />
+        <button className="bg-violet-800 hover:bg-violet-600 p-3 py-1 rounded-md mx-6 font-bold text-white ">
+          Add
+        </button>
         <h2 className="text-lg font-bold  ">Your Todos</h2>
-       
+
         <div className="todos">
           <div className="todo flex">
-            <div className="text"> Lorem ipsum dolor, sit amet consectetur adipisicing.</div>
-              <div className="buttons">
-                <button>Edit</button>
-                <button>Delete</button>
-              </div>
+            <div className="text">
+              {" "}
+              Lorem ipsum dolor, sit amet consectetur adipisicing.
+            </div>
+            <div className="buttons">
+              <button className="bg-violet-800 hover:bg-violet-600 p-3 py-1 rounded-md mx-1 font-bold text-white ">
+                Edit
+              </button>
+              <button className="bg-violet-800 hover:bg-violet-600 p-3 py-1 rounded-md mx-1 font-bold text-white ">
+                Delete
+              </button>
             </div>
           </div>
         </div>
-      
+      </div>
     </>
   );
 }
