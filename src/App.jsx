@@ -6,6 +6,28 @@ import Navbar from "./Components/Navbar";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [todo, settodo] = useState('')
+  const [todos, settodos] = useState([])
+
+  const handleEdit = ()=>{
+
+  }
+
+  const handleDelete = ()=>{
+
+  }
+  const handleAdd = ()=>{
+    settodos([...todos,{todo, isCompleted: false}])
+    settodo('');
+    console.log(todos);
+    
+    
+
+  }
+  const handleChange=(e)=>{
+    settodo(e.target.value )
+  }
+
 
   return (
     <>
@@ -15,27 +37,31 @@ function App() {
           <h2 className="text-lg font-bold my-5 ">Add a Todo</h2>
         </div>
 
-        <input type="text" className="w-80 rounded-md" />
-        <button className="bg-violet-800 hover:bg-violet-600 p-3 py-1 rounded-md mx-6 font-bold text-white ">
+        <input onChange={handleChange} value={todo} type="text" className="w-80 rounded-md" />
+        <button onClick={handleAdd} className="bg-violet-800 hover:bg-violet-600 p-3 py-1 rounded-md mx-6 font-bold text-white ">
           Add
         </button>
         <h2 className="text-lg font-bold  ">Your Todos</h2>
 
         <div className="todos">
+          {todos.map(item =>{
+            return
+          
           <div className="todo flex">
-            <div className="text">
+            <div className={item.isCompleted ? "" : "line-through"}>{item.todo}
               {" "}
-              Lorem ipsum dolor, sit amet consectetur adipisicing.
+            My Todo
             </div>
             <div className="buttons">
-              <button className="bg-violet-800 hover:bg-violet-600 p-3 py-1 rounded-md mx-1 font-bold text-white ">
+              <button onClick={handleEdit} className="bg-violet-800 hover:bg-violet-600 p-3 py-1 rounded-md mx-1 font-bold text-white ">
                 Edit
               </button>
-              <button className="bg-violet-800 hover:bg-violet-600 p-3 py-1 rounded-md mx-1 font-bold text-white ">
+              <button onClick={handleDelete} className="bg-violet-800 hover:bg-violet-600 p-3 py-1 rounded-md mx-1 font-bold text-white ">
                 Delete
               </button>
             </div>
           </div>
+          })}
         </div>
       </div>
     </>
