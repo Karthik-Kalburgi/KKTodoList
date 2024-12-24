@@ -3,6 +3,8 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Navbar from "./Components/Navbar";
+import { FaEdit } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
@@ -66,18 +68,19 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto my-5 rounded-xl p-5 bg-violet-100 min-h-[80vh] ">
-        <div className="AddTodo">
+      <div className=" mx-3 md:container md:mx-auto my-5 rounded-xl p-5 bg-violet-100 min-h-[80vh] md:w-1/2 ">
+        <div className="AddTodo flex flex-col gap-4 my-2">
           <h2 className="text-lg font-bold my-5 ">Add a Todo</h2>
         </div>
         <input
           onChange={handleChange}
           value={todo}
           type="text"
-          className="w-80 rounded-md"
+          className="border-black transition-colors rounded-md md:w-full my-2"
         />
         <button
-          onClick={handleAdd} disabled={todo.length<=3}
+          onClick={handleAdd}
+          disabled={todo.length <= 3}
           className="bg-violet-800 disabled:bg-neutral-800 hover:bg-violet-600 p-3 py-1 rounded-md mx-6 font-bold text-white "
         >
           Save
@@ -91,12 +94,12 @@ function App() {
               <div className="flex gap-5 ">
                 <div
                   key={item.id}
-                  className="todo flex w-1/2 justify-between my-3"
+                  className="todo flex md:w-1/2 justify-start my-3"
                 >
                   <input
                     onChange={handleCheckbox}
                     type="checkbox"
-                    checked={item.isCompleted} 
+                    checked={item.isCompleted}
                     name={item.id}
                     id=""
                   />
@@ -109,15 +112,15 @@ function App() {
                     onClick={(e) => handleEdit(e, item.id)}
                     className="bg-violet-800 hover:bg-violet-600 p-3 py-1 rounded-md mx-1 font-bold text-white "
                   >
-                    Edit
+                    <FaEdit />
                   </button>
                   <button
                     onClick={(e) => {
                       handleDelete(e, item.id);
                     }}
-                    className="bg-violet-800 hover:bg-violet-600 p-3 py-1 rounded-md mx-1 font-bold text-white "
+                    className="bg-red-500 hover:bg-violet-600 p-3 py-1 rounded-md mx-1 font-bold text-white "
                   >
-                    Delete
+                    <MdDeleteForever />
                   </button>
                 </div>
               </div>
